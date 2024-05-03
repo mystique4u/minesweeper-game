@@ -5,7 +5,7 @@ const CHEAT_REVEAL_ALL = true;
 
 const ROWS_COUNT = 10;
 const COLS_COUNT = 10;
-const BOMBS_COUNT = ;
+const BOMBS_COUNT = 10;
 
 var defeat = false;
 var victory = false;
@@ -41,6 +41,26 @@ for (var row = 0; row < ROWS_COUNT; row++) {
 //                Add a BOMBS_COUNT constant so that you can easily change the amount of bombs placed. Put it next to the
 //                other constants.
 //
+
+function randCreateBombs(count) {
+  let numX = 0;
+  let numY = 0;
+  for (i = 0; i < count; i++){
+    numX = Math.floor(Math.random() * count);
+    numY = Math.floor(Math.random() * count);
+    cells[numX][numY].isBomb = true;
+  }
+}
+
+randCreateBombs(BOMBS_COUNT);
+//randCreateBombs(BOMBS_COUNT);
+  // for (var row = 0; row < ROWS_COUNT; row++) {
+  //   cells[row] = Array(COLS_COUNT);
+  //   for (var col = 0; col < COLS_COUNT; col++) {
+  //     cells[row][col] = new Cell();
+  //   }
+
+
 
 
 // Once the game has been initialized, we "render" it.
