@@ -1,7 +1,7 @@
 
 // Set this constant to true to debug the placement of bombs without
 // having to click on all cells to reveal them.
-const CHEAT_REVEAL_ALL = true;
+const CHEAT_REVEAL_ALL = false;
 
 const ROWS_COUNT = 10;
 const COLS_COUNT = 10;
@@ -52,7 +52,6 @@ randCreateBombs(BOMBS_COUNT);
 
 // Once the game has been initialized, we "render" it.
 render();
-console.log(cells);
 
 //
 // Game functions definitions
@@ -62,8 +61,7 @@ function discoverCell(row, col) {
   //
   // TODO: Task 5 - Reveal cells when clicked.
   //
-
-
+  cells[row][col].discovered = true;
   //
   // TODO: Task 6 - Discover neighbor cells recursively, as long as there are no adjacent bombs to the current cell.
   //
@@ -88,7 +86,6 @@ function countAdjacentBombs(row, col) {
   // TODO: Task 4 - Adjacent bombs are bombs in cells touching our cell (also diagonally). Implement this function
   //                so that it returns the count of adjacent cells with bombs in them. 
   let count = 0;
-
     //topcell
     if(row != 0 && cells[row-1][col].isBomb){
       count += 1;
@@ -121,41 +118,7 @@ function countAdjacentBombs(row, col) {
     if(row != 0 && col != 0 && cells[row-1][col-1].isBomb){
       count += 1;
     }
-
   return count;
-
-// console.log(`ROW ${row}`);
-// console.log(`COL ${col}`);
-
-// //only xy
-// CheckTopCell row -1
-// checkRightCell col +1
-// CheckBottomCell row +1
-// checkLeftCell col -1
-
-// //check diagonals
-// checkTopRightDiagCell  row -1 col +1
-// CheckBottomRightDiagCell row +1 col +1
-// CheckBottomLeftDiagCell row +1 col -1
-// checkTopLeftDiagCell row -1 col -1
-
-// //dont check
-// //if col < 0 
-// //if row < 0
-// //if col > COLS_COUNT
-// //if col > ROW_COUNT
-
-// //find edge cases
-// //edge and corners
-// if row < 0 = edgeTop
-// if col > COLS_COUNT = edgeRight true
-// if row > ROW_COUNT = edgeBottom true
-// if col < 0 = edgeleft true then check only
-
-// cornerTopRight if col = COLS_COUNT  && row = 0 
-// cornerBottomRight if row = ROWS_Count && col = COLS_COUNT
-// cornerBottomLeft if row = ROWS_Count && col = 0
-// cornerTopLeft if row = 0 && col = 0
 }
 
 function getBombsCount() {
