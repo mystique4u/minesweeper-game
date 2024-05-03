@@ -31,24 +31,20 @@ for (var row = 0; row < ROWS_COUNT; row++) {
 // cells[0][1].isBomb = true;
 // cells[5][4].isBomb = true;
 // cells[9][9].isBomb = true;
-// cells[0][1].isBomb = true;
-// cells[5][8].isBomb = true;
-// cells[7][7].isBomb = true;
-
 
 //
 // TODO: Task 2 - Comment out the code of task 1. Instead of adding bombs in fixed places, add 10 of them in random places.
 //                Add a BOMBS_COUNT constant so that you can easily change the amount of bombs placed. Put it next to the
 //                other constants.
-//
 
 function randCreateBombs(count) {
   let numX = 0;
   let numY = 0;
   for (i = 0; i < count; i++){
-    numX = Math.floor(Math.random() * count);
-    numY = Math.floor(Math.random() * count);
+    numX = Math.floor(Math.random() * COLS_COUNT);
+    numY = Math.floor(Math.random() * ROWS_COUNT);
     cells[numX][numY].isBomb = true;
+    // console.log(`${numX}x ${numY}y`);
   }
 }
 
@@ -56,7 +52,7 @@ randCreateBombs(BOMBS_COUNT);
 
 // Once the game has been initialized, we "render" it.
 render();
-
+console.log(cells);
 
 //
 // Game functions definitions
@@ -67,9 +63,11 @@ function discoverCell(row, col) {
   // TODO: Task 5 - Reveal cells when clicked.
   //
 
+
   //
   // TODO: Task 6 - Discover neighbor cells recursively, as long as there are no adjacent bombs to the current cell.
   //
+
 
   //
   // TODO: Task 8 - Implement defeat. If the player "discovers" a bomb (clicks on it without holding shift), set the variable defeat to true.
@@ -89,8 +87,75 @@ function countAdjacentBombs(row, col) {
   //
   // TODO: Task 4 - Adjacent bombs are bombs in cells touching our cell (also diagonally). Implement this function
   //                so that it returns the count of adjacent cells with bombs in them. 
-  //
-  return 1;
+  let count = 0;
+
+    //topcell
+    if(row != 0 && cells[row-1][col].isBomb){
+      count += 1;
+    }
+    //rightcell
+    if(col < COLS_COUNT - 1 && cells[row][col+1].isBomb){
+      count += 1;
+    }
+    //bootomcell
+    if(row < ROWS_COUNT - 1 && cells[row+1][col].isBomb){
+      count += 1;
+    }
+    //leftcell
+    if(col != 0 && cells[row][col-1].isBomb ){
+      count += 1;
+    }
+    //toprightcell
+    if(row != 0 && col < COLS_COUNT - 1 && cells[row-1][col+1].isBomb){
+      count += 1;
+    }
+    //bottomrightcell
+    if(col < COLS_COUNT - 1 && row < ROWS_COUNT - 1 && cells[row+1][col+1].isBomb){
+      count += 1;
+    }
+    //bottomleftcell
+    if(col != 0 && row < ROWS_COUNT - 1 && cells[row+1][col-1].isBomb){
+      count += 1;
+    }
+    //topleftcell
+    if(row != 0 && col != 0 && cells[row-1][col-1].isBomb){
+      count += 1;
+    }
+
+  return count;
+
+// console.log(`ROW ${row}`);
+// console.log(`COL ${col}`);
+
+// //only xy
+// CheckTopCell row -1
+// checkRightCell col +1
+// CheckBottomCell row +1
+// checkLeftCell col -1
+
+// //check diagonals
+// checkTopRightDiagCell  row -1 col +1
+// CheckBottomRightDiagCell row +1 col +1
+// CheckBottomLeftDiagCell row +1 col -1
+// checkTopLeftDiagCell row -1 col -1
+
+// //dont check
+// //if col < 0 
+// //if row < 0
+// //if col > COLS_COUNT
+// //if col > ROW_COUNT
+
+// //find edge cases
+// //edge and corners
+// if row < 0 = edgeTop
+// if col > COLS_COUNT = edgeRight true
+// if row > ROW_COUNT = edgeBottom true
+// if col < 0 = edgeleft true then check only
+
+// cornerTopRight if col = COLS_COUNT  && row = 0 
+// cornerBottomRight if row = ROWS_Count && col = COLS_COUNT
+// cornerBottomLeft if row = ROWS_Count && col = 0
+// cornerTopLeft if row = 0 && col = 0
 }
 
 function getBombsCount() {
