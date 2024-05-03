@@ -5,6 +5,7 @@ const CHEAT_REVEAL_ALL = true;
 
 const ROWS_COUNT = 10;
 const COLS_COUNT = 10;
+const BOMBS_COUNT = ;
 
 var defeat = false;
 var victory = false;
@@ -30,9 +31,9 @@ for (var row = 0; row < ROWS_COUNT; row++) {
 // cells[0][1].isBomb = true;
 // cells[5][4].isBomb = true;
 // cells[9][9].isBomb = true;
-cells[0][1].isBomb = true;
-cells[5][8].isBomb = true;
-cells[7][7].isBomb = true;
+// cells[0][1].isBomb = true;
+// cells[5][8].isBomb = true;
+// cells[7][7].isBomb = true;
 
 
 //
