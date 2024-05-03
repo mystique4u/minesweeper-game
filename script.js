@@ -53,15 +53,6 @@ function randCreateBombs(count) {
 }
 
 randCreateBombs(BOMBS_COUNT);
-//randCreateBombs(BOMBS_COUNT);
-  // for (var row = 0; row < ROWS_COUNT; row++) {
-  //   cells[row] = Array(COLS_COUNT);
-  //   for (var col = 0; col < COLS_COUNT; col++) {
-  //     cells[row][col] = new Cell();
-  //   }
-
-
-
 
 // Once the game has been initialized, we "render" it.
 render();
