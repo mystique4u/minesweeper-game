@@ -57,6 +57,9 @@ render();
 // Game functions definitions
 //
 
+// let clearedCells = 0;
+// console.log(clearedCells);
+
 function discoverCell(row, col) {
   //
   // TODO: Task 5 - Reveal cells when clicked.
@@ -163,13 +166,18 @@ function getBombsCount() {
   //
   // TODO: Task 9 - Implement stats: the counters currently always display 0, calculate and return the relevant values.
   //
-  return 0;
+  return BOMBS_COUNT;
 }
 
 function getClearedCells() {
   //
   // TODO: Task 9 - Implement stats: the counters currently always display 0, calculate and return the relevant values.
   //
+  // for (let index = 0; index < cells.length; index++) {
+  //   const element = array[index];
+    
+  // }
+
   return 0;
 }
 
